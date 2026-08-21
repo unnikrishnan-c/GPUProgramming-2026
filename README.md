@@ -12,11 +12,11 @@ Demos of the code is shown in RTX 2080 Ti
 4) How to allocate head and head->dist in device for the below code
       struct node {int *dist}*head;
  
-5) cuda keywords: __global__ , __device__ , __shared__, __constant__, 
+5) cuda keywords: \_\_global\_\_ , \_\_device\_\_ , \_\_shared\_\_, \_\_constant\_\_, 
 
-6) cuda datatypes: cudaError_t ,dim3   
+6) cuda datatypes: cudaError\_t ,dim3   
 
-7) CUDA API functions: cudaMalloc(),cudaFree(), cudaMemcpy, cudaMemcpyFromSymbol, cudaMemcpyToSymbol,__syncthreads(), atomicAdd, atomicCAS, 
+7) CUDA API functions: cudaMalloc(),cudaFree(), cudaMemcpy, cudaMemcpyFromSymbol, cudaMemcpyToSymbol,\_\_syncthreads(), atomicAdd, atomicCAS.
 
 8) builtin variables: threadIdx.x, blockIdx.x, blockDim.x 
 
