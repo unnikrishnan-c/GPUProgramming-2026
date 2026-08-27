@@ -11,7 +11,7 @@ __global__ void K1 (int *dptr, int N)
 
   if(blockIdx.x==0)atomicAdd(&val,1);
   if(tid %32==0 ){
-	  __syncthreads();//threads 0 to 39.
+	  __syncthreads();//first thread in each warp satisfy the condition.
   }
  // __syncthreads();//all threads
   if(blockIdx.x==0 && val < 1056)printf ("threadIdx.x =%d blockIdx.x=%d , val=%d\n",threadIdx.x,blockIdx.x, val);
