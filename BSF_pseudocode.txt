@@ -1,0 +1,27 @@
+int changed = 0, lev = 0;
+ void reset (Point t, Graph graph) {
+	 t.dist = UINT_MAX; //initialize dist to a large value (∞) .
+ }
+ void BFS(Point p, Graph graph, int lev) {
+	 foreach( t In p.outnbrs ){
+		 if( t.dist > lev + 1 ){
+			 t.dist = lev + 1;
+			 changed = 1;
+ 		}//end if
+ 	}//end foreach
+ }//end bfs
+ int main(int argc, char *argv[]) {
+	 Graph graph;
+	 graph.addPointProperty(dist, int);
+	 graph.read(argv[3]);
+	 foreach(t In graph.points) reset(t, graph);
+	 graph.points[0].dist = 0;
+	 while( 1 ){
+		 changed = 0;
+		 foreach(t In graph.points)(t.dist == lev)
+		 BFS(t, graph, lev);
+		 if (changed == 0) break;
+		 lev++;
+	 }//end while
+//print distance
+ }//end main

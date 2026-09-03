@@ -1,0 +1,42 @@
+int changed=0;
+relaxgraph (Point p, Graph graph){
+   if (p.updated==true){
+	p.updated=false;
+	foreach( t In p.outnbrs){
+    		temp=t.dist;
+	       atomicMIN(&t.dist, p,dist+graph.getWeight(p,t));
+	      if(t.dist <temp)changed=1;
+	}//end foreach
+   }//endif
+}/end relaxgraph
+
+reset(Point p, Graph graph){
+  t.dist=t.olddist=UINT_MAX;
+  t.updated=false;
+}
+
+reset1(Point p, Graph graph){
+    p.updated=false;
+    if(p.dist <t.olddist)p.updated=true;
+    p.olddist=p.dist;
+}
+
+main(int argc, char *argv[]){
+  Graph graph;
+  graph.addPointProperty(dist, int);
+  graph.addPointProperty(olddist, int);
+  graph.addPointProperty(updated, bool);
+  graph.read(argv[1]);
+  foreach( p In graph.points)reset(p,graph);
+  graph.points[0].dist=0;  
+  graph.points[0].updated=true;
+  while(1){
+     changed=0;
+     foreach(p In graph.points)relaxgraph(p, graph);
+     if(changed==0)break;
+     foreach(p In graph.points)reset1(p,graph);
+  }//end while
+  //print distance 
+}
+
+   

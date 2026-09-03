@@ -23,7 +23,6 @@ int main ()
   cudaError_t err;
   int *dptr;
   //allocate memory on device.
-
   cudaMalloc ((void **) &dptr, sizeof (int) * 10);
   err = cudaGetLastError ();
   K1 <<<1 , 1024 >>> (dptr,30);
