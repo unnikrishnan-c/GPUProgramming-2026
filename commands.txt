@@ -1,0 +1,5 @@
+#convert all warning to error
+nvcc --Werror all-warnings cudadebug1.cu
+nvcc -lineinfo cudadebug1.cu
+nvcc -G cudadebug1.cu
+run code with cuda-gdb
